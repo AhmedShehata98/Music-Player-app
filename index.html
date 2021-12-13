@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- End Google fonts -->
+    <link rel="stylesheet" href="css/vendor/normalize.css">
+    <link rel="stylesheet" href="css/music.css">
+    <title>Music Player APP</title>
+</head>
+<body>
+    <audio src="audio/Sam Day - Nothing To Hide [NCS Release]_02.mp3" type='audio/mpeg' id="playerTag"></audio>
+    <main class="container">
+        <section class="main-body">
+            <header class="app-header">
+                <ion-icon name="more"></ion-icon>
+                <h2>Music App</h2>
+            </header>
+            <section class="music-picture">
+                <img class="cover" src="img/04.jpg">
+            </section>
+            <section class="progress-bar">
+                <input type="range" id="seekbar">
+                <div class="time">
+                    <span class="currentTime">01:00</span>
+                    <span class="songDurtion">00:00</span>
+                </div>
+                <div class="songName">
+                    <h3 class="songNameH3">song name</h3>
+                    <p class="aristName">artist name</p>
+                </div>
+            </section>
+            <section class="control-btns">
+                <div class="music-control">
+                    <div class="btn prev-btn">
+                        <ion-icon name="rewind"></ion-icon>
+                    </div>
+                    <div class="btn play-btn">
+                        <ion-icon class="ico play" name="play"></ion-icon>
+                        <ion-icon class="ico pause" name="pause"></ion-icon>
+                    </div>
+                    <div class="btn next-btn">
+                        <ion-icon name="fastforward"></ion-icon>
+                    </div>
+                </div>
+                <div class="volume-control">
+                    <ion-icon class="volMute" name="volume-mute"></ion-icon>
+                    <input type="range" value="100" id="volume">
+                    <ion-icon class="volHigh" name="volume-high"></ion-icon>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
