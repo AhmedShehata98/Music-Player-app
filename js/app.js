@@ -1,19 +1,14 @@
-const play = document.querySelector('.play')
-const pause = document.querySelector('.pause');
-const coverIMG = document.querySelector('.container .main-body .music-picture img');
-play.addEventListener('click',()=>{
-    pause.style.display='block'
-    pause.style.opacity='1'
-    play.style.display='none'
-    coverIMG.classList.add('active')
-    audioPlayerTag.play();
-})
-pause.addEventListener('click',()=>{
-    play.style.display='block'
-    pause.style.display='none'
-    coverIMG.classList.remove('active')
-    audioPlayerTag.pause();
-})
+// const play = document.querySelector('.play')
+// const pause = document.querySelector('.pause');
+// const coverIMG = document.querySelector('.container .main-body .music-picture img');
+// play.addEventListener('click',()=>{
+
+//     playMusic();
+// })
+// pause.addEventListener('click',()=>{
+
+//     pauseMusic();
+// })
 // 
 // 
 // 
@@ -88,6 +83,22 @@ function timeFormat(time){
     return `${min}:${sec}`
 }
 
+// Play Music Function
+function playMusic(){
+    pause_btn.style.display='block'
+    pause_btn.style.opacity='1'
+    play_btn.style.display='none'
+    songCover.classList.add('active');
+    audioPlayerTag.play();
+}
+
+// Pause Music Function
+function pauseMusic(){
+    play_btn.style.display='block'
+    pause_btn.style.display='none'
+    songCover.classList.remove('active');
+    audioPlayerTag.pause();
+}
 // 
 // Increment The Seekbar and current time values
 let setHandel=setInterval(() => {
@@ -95,9 +106,7 @@ let setHandel=setInterval(() => {
     CurrentTime.innerHTML= timeFormat(audioPlayerTag.currentTime);
     // in music finished Return the play btn to his state
     if(audioPlayerTag.currentTime === audioPlayerTag.duration){
-        play.style.display='block'
-        pause.style.display='none'
-        coverIMG.classList.remove('active')
+        pauseMusic();
         
     }
 
@@ -105,6 +114,19 @@ let setHandel=setInterval(() => {
 if (audioPlayerTag.currentTime == audioPlayerTag.duration) { 
     clearInterval(setHandel)
 }
+// Play & pause music button events
+// 
+// play
+play_btn.addEventListener('click',()=>{
+    playMusic();
+})
+// 
+// Pause
+pause_btn.addEventListener('click',()=>{
+    pauseMusic();
+})
+
+
 // 
 // Change Music track time
 seekBar.addEventListener('change',()=>{
@@ -115,19 +137,20 @@ seekBar.addEventListener('change',()=>{
 // 
 prev_btn.addEventListener('click' ,()=>{
     if (currentSongIndex <= 0) {
-
         
     }else{
         currentSongIndex--;
         setupMusic(currentSongIndex);
+        playMusic();
     }
 })
 next_btn.addEventListener('click' ,()=>{
     if (currentSongIndex >= songs.length -1) {
-
+        
     }else{
         currentSongIndex++;
         setupMusic(currentSongIndex);
+        playMusic();
     }
 })
     
@@ -146,5 +169,6 @@ vol_high_btn.addEventListener('click',()=>{
 
 })
 volRangeBar.addEventListener('change',()=>{
+    volmute_btn.style.color='#fff';
     audioPlayerTag.volume = volRangeBar.value /100;
 })
