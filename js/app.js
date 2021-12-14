@@ -133,6 +133,17 @@ seekBar.addEventListener('change',()=>{
     audioPlayerTag.currentTime = seekBar.value;
 })
 
+// if music ended 
+audioPlayerTag.addEventListener('ended',()=>{
+    if(currentSongIndex >= songs.length -1){
+
+    }else{
+        currentSongIndex++
+        setupMusic(currentSongIndex);
+        playMusic();
+    }
+})
+
 //  Change the Track
 // 
 prev_btn.addEventListener('click' ,()=>{
@@ -146,7 +157,7 @@ prev_btn.addEventListener('click' ,()=>{
 })
 next_btn.addEventListener('click' ,()=>{
     if (currentSongIndex >= songs.length -1) {
-        
+
     }else{
         currentSongIndex++;
         setupMusic(currentSongIndex);
